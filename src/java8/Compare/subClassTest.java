@@ -1,4 +1,4 @@
-package java8;
+package java8.Compare;
 
 /**
  * java 8 新特性测试类

@@ -1,4 +1,4 @@
-package java8;
+package java8.Compare;
 
 public interface CompareB {
 

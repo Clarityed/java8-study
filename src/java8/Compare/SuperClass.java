@@ -1,4 +1,4 @@
-package java8;
+package java8.Compare;
 
 /**
  * 测试父类

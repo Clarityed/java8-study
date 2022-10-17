@@ -1,4 +1,4 @@
-package java8;
+package java8.Compare;
 
 /**
  * JDK8：除了定义常量和抽象方法之外，还可以定义静态方法、默认方法
