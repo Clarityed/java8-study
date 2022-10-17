@@ -1,8 +1,7 @@
-package java8.newDateApi;
+package java8.NewDateApi;
 
 import org.junit.Test;
 
-import java.text.SimpleDateFormat;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
