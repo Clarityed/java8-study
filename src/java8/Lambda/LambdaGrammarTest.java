@@ -6,6 +6,7 @@ import java.util.Comparator;
 import java.util.function.Consumer;
 
 /**
+ *
  * Lambda 表达式的使用，接口要求只有一个抽象方法
  *
  * 1. 举例：(o1, o2) -> Integer.compare(o1, o2);
@@ -17,7 +18,10 @@ import java.util.function.Consumer;
  *      总结：
  *          （1）-> 左边：Lambda 形参列表的参数类型可以省略（类型推断）；如果 Lambda 形参列表只有一个参数，其一对 () 也可以省略
  *          （2）-> 右边：Lambda 体应该使用一对 {} 包裹；如果 Lambda 体只有一条执行语句（可能是 return 语句），可以省略这对 {}，但是 return 语句一定要省略
- * 4. Lambda 表达式的本质：作为接口的实例（就是接口实现类的对象）
+ * 4. Lambda 表达式的本质：作为函数式接口的实例（就是函数式接口实现类的对象）
+ * 5. 如果一个接口中，只声明了一个抽象方法，则此接口就称为函数式接口。
+ *    我们可以在一个接口上使用 @FunctionalInterface 注解，这样做就可以检查它是否是一个函数式接口。
+ * 6. 以前用匿名实现类表示的现在都可以用 Lambda 表达式来写。
  *
  * @author: clarity
  * @date: 2022年10月17日 20:01
