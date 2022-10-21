@@ -16,6 +16,25 @@ public class Employee {
     private double salary;
 
     public Employee() {
+        System.out.println("Employee()");
+    }
+
+    public Employee(int id) {
+        System.out.println("Employee(int id)");
+        this.id = id;
+    }
+
+    public Employee(int id, String name) {
+        System.out.println("Employee(int id, String name)");
+        this.id = id;
+        this.name = name;
+    }
+
+    public Employee(int id, String name, int age) {
+        System.out.println("Employee(int id, String name, int age)");
+        this.id = id;
+        this.name = name;
+        this.age = age;
     }
 
     public Employee(int id, String name, int age, double salary) {
