@@ -15,7 +15,7 @@ import java.util.stream.Stream;
  * @author: clarity
  * @date: 2022年10月21日 11:45
  */
-public class StreamAPITest {
+public class CreateStreamAPITest {
 
     // 创建 Stream 方式一：通过集合创建
     @Test
