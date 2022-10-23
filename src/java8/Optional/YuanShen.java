@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
+import java.util.ArrayList;
 
 /**
  * 原神游戏类
@@ -18,6 +18,6 @@ import java.util.List;
 @NoArgsConstructor
 public class YuanShen {
 
-    private List<Role> roleList;
+    private ArrayList<Role> roleList;
 
 }
