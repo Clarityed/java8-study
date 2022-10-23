@@ -4,9 +4,9 @@ import java8.Lambda.MethodQuote.Employee;
 import java8.Lambda.MethodQuote.EmployeeData;
 import org.junit.Test;
 
-import java.util.Comparator;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
+import java.util.function.BinaryOperator;
+import java.util.stream.Collectors;
 
 /**
  * 测试 Stream 的终止操作
@@ -59,6 +59,52 @@ public class TerminalOperationTest {
         System.out.println(minSalary);
         // forEach(Consumer c) 内部迭代
         employeeList.stream().forEach(System.out::println);
+        // 使用集合的遍历操作
+        employeeList.forEach(System.out::println);
+    }
+
+    // 2. 规约
+    @Test
+    public void test2() {
+        // reduce(T identity, BinaryOperator)————可以将流中元素反复结合起来，得到一个值。返回 T
+        // 练习1：计算 1 —— 10 的自然数的和
+        List<Integer> list = Arrays.asList(1,2,3,4,5,6,7,8,9,10);
+        // 原始方法，匿名函数
+        Integer sum1 = list.stream().reduce(0, new BinaryOperator<Integer>() {
+            @Override
+            public Integer apply(Integer i1, Integer i2) {
+                return i1 + i2;
+            }
+        });
+        // 进阶写法，Lambda 表达式
+        Integer sum2 = list.stream().reduce(0, (i1, i2) -> i1 + i2);
+        // 高级写法，方法引用
+        Integer sum3 = list.stream().reduce(0, Integer::sum);
+        System.out.println(sum1);
+        System.out.println(sum2);
+        System.out.println(sum3);
+        // reduce(BinaryOperator)————可以将流中元素反复结合起来，得到一个值。返回 Optional<T>
+        // 练习2：计算公司所有员工工资的总和
+        Optional<Double> sumSalary = EmployeeData.getEmployees().stream().map(Employee::getSalary).reduce(Double::sum);
+        System.out.println(sumSalary);
+        Optional<Employee> employee = EmployeeData.getEmployees().stream().reduce((e1, e2) -> {
+            Employee employee1 = new Employee();
+            employee1.setSalary(Double.sum(e1.getSalary(), e2.getSalary()));
+            return employee1;
+        });
+        System.out.println(employee);
+    }
+
+    // 3. 收集
+    @Test
+    public void test3() {
+        // collect(Collector c)————将流转换为其他形式。接收一个 Collector 接口的实现，用于 Stream 中元素做汇总的方法。
+        // 练习1：查找工资大于 6000 的员工，结果返回为一个 List 或 Set
+        List<Employee> employeeList = EmployeeData.getEmployees().stream().filter(employee -> employee.getSalary() > 50000).collect(Collectors.toList());
+        employeeList.forEach(System.out::println);
+        System.out.println();
+        Set<Employee> employeeSet = EmployeeData.getEmployees().stream().filter(employee -> employee.getSalary() > 50000).collect(Collectors.toSet());
+        employeeSet.forEach(System.out::println);
     }
 
 }
